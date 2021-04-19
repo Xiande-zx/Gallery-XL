@@ -20,17 +20,22 @@
     <form action="/photos/add-photos" method="POST">
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
-          <input type="text" maxlength="10" class="form-control" id="name" name="name" pattern="[a-zA-Z0-9_]*">
+          <input type="text" maxlength="10" class="form-control" id="name" name="name" pattern="[a-zA-Z0-9_]*" required>
         </div>
         <div class="mb-3">
           <label for="url" class="form-label">Url</label>
-          <input type="url" class="form-control" id="url" name="url">
+          <input type="url" class="form-control" id="url" name="url" required>
         </div>
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date">
+            <input type="date" class="form-control" id="date" name="date" required>
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      <div>
+        <% if (url != '') { %>
+        <p style="background-color: rgb(218, 118, 118);">La Url (<%= url %>) ya existe en nuestro almacén, y por lo tanto, no lo podemos añadir.</p>
+        <% } %>
+      </div>
 </body>
 </html>

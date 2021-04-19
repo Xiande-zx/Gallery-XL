@@ -10,7 +10,7 @@ app.use('/photos', photosRoutes)
 
 app.get('/', (req, res) => {
     
-    res.send('Bienvenido a la página Web de PROGATS')
+    res.send('Bienvenido a la página Web de Gallery XL')
 })
 
 app.listen(3000)

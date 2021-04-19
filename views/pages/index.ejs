@@ -24,10 +24,11 @@
     <div class="d-flex flex-row">
         <% photos.forEach( (photo)=> { %>
                 <div class="mx-3">
-                    <p><%= photo.name %> - <%= photo.date %></p>
+                    <p><%= photo.name.toUpperCase() %> - <%= photo.date %></p>
                     <img src='<%= photo.url %>' alt="<%= photo.name %>">
+                    <p style="background-color: <%= photo.color %>"><%= photo.color %></p>
                 </div>
-                        <% }); %>
+        <% }); %>
     </div>
             
                           
