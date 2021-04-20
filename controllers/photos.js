@@ -39,3 +39,28 @@ exports.postAddPhotos = (req, res) => {
   }
   
 }
+
+exports.deletePhoto = (req, res) => {
+
+  var id = req.params.id
+
+  photos.deletePhoto(id)
+
+  res.redirect('/photos')
+}
+
+exports.getEditPhoto = (req, res) => {
+  var photo = photos.getPhotoById(req.params.id)
+  res.render('pages/add-photos', { page_name: 'edit', url: '', photo : photo})
+}
+
+exports.postEditPhoto = (req, res) => {
+
+  var id = req.params.id
+  var name = req.body.name
+  var date = req.body.date
+
+  photos.editPhoto(id,name,date)
+ 
+  res.redirect('/photos')
+}
