@@ -19,6 +19,13 @@ const BBDD_photos = [
     url: 'https://i.picsum.photos/id/258/200/200.jpg?hmac=SRxBTuyYSeHtVooeEMwmQPB0yIF3fqnvrOBR7DJnOlM',
     date: '2021-04-30',
     color: 'rgb(225,25,107)'
+  },
+  {
+    id: 4,
+    name: 'photo4',
+    img: 'gato-marron_0.jpg',
+    date: '2021-04-29',
+    color: 'rgb(225,25,107)'
   }
 ]
 
@@ -34,13 +41,13 @@ exports.exist = (url) => {
     })
 }
 
-exports.addPhoto = (name, url, date, color) => {
+exports.addPhoto = (name, img, date, color) => {
 
     const newPhoto =
     {
         id: uuid.v1(),
         name: name,
-        url: url,
+        img: img,
         date: date,
         color: color
     }

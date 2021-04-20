@@ -28,7 +28,7 @@
         <% photos.forEach( (photo)=> { %>
                 <div class="mx-3">
                     <p class="my-2"><%= photo.name.toUpperCase() %> - <%= photo.date %></p>
-                    <img src='<%= photo.url %>' alt="<%= photo.name %>">
+                    <img src='../../img/<%= photo.img %>' alt="<%= photo.name %>">
                     <p style="background-color: <%= photo.color %>"><%= photo.color %></p>
                     <div class="d-flex justify-content-evenly ">
                         <a href="/photos/delete-photos/<%= photo.id %>"><i class="fas fa-trash-alt" ></i></a>

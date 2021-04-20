@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const multer = require('multer')
 
 // Importamos el modelo que queremos usar
 const photos = require('../models/photos')
@@ -9,9 +10,11 @@ const photosController = require('../controllers/photos')
 
 router.get('/', photosController.getAllPhotos)
 
+
 router.get('/add-photos', photosController.getAddPhotos)
 
-router.post('/add-photos', photosController.postAddPhotos)
+// router.post('/add-photos', photosController.postAddPhotos)
+
 
 router.get('/delete-photos/:id', photosController.deletePhoto)
 

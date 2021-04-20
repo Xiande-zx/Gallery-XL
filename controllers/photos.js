@@ -17,35 +17,53 @@ exports.getAddPhotos = (req, res) => {
 exports.postAddPhotos = (req, res) => {
   // recibir los datos del POST
   const name = req.body.name
-  const url = req.body.url
+  const img = req.file
   const date = req.body.date
-  
-  if (!photos.exist(url)) {
-    
-    ColorThief.getColor(url)
-    .then(resColor => { 
-      console.log(resColor)
-      const color = `rgb(${resColor[0]}, ${resColor[1]}, ${resColor[2]})`
-      // insertar el nuevo gato en la BBDD
-      photos.addPhoto(name, url, date, color)
+  console.log(img)
 
-      // redirigir al cliente a la lista de gatos
-      res.redirect('/photos')
-    })
-    .catch(err => { console.log(err) })
+  photos.addPhoto(name, img, date)
+  // redirigir al cliente a la lista de gatos
+  res.redirect('/photos')
 
-  } else {
-    res.render('pages/add-photos', { page_name: 'add', url: url})
-  }
-  
+  // if (!photos.exist(url)) {
+  //   ColorThief.getColor(url)
+  //   .then(resColor => { 
+  //     console.log(resColor)
+  //     const color = `rgb(${resColor[0]}, ${resColor[1]}, ${resColor[2]})`
+  //     // insertar el nuevo gato en la BBDD
+  //   })
+  //   .catch(err => { console.log(err) })
+  // } else {
+  //   res.render('pages/add-photos', { page_name: 'add', url: url})
+  // }
+  res.send('file upload succes')
 }
 
+// exports.postAddPhotos = (req, res) => {
+//   // recibir los datos del POST
+//   const name = req.body.name
+//   const url = req.body.url
+//   const date = req.body.date
+  
+//   if (!photos.exist(url)) {
+//     ColorThief.getColor(url)
+//     .then(resColor => { 
+//       console.log(resColor)
+//       const color = `rgb(${resColor[0]}, ${resColor[1]}, ${resColor[2]})`
+//       // insertar el nuevo gato en la BBDD
+//       photos.addPhoto(name, url, date, color)
+//       // redirigir al cliente a la lista de gatos
+//       res.redirect('/photos')
+//     })
+//     .catch(err => { console.log(err) })
+//   } else {
+//     res.render('pages/add-photos', { page_name: 'add', url: url})
+//   }
+// }
+
 exports.deletePhoto = (req, res) => {
-
   var id = req.params.id
-
   photos.deletePhoto(id)
-
   res.redirect('/photos')
 }
 
@@ -55,12 +73,13 @@ exports.getEditPhoto = (req, res) => {
 }
 
 exports.postEditPhoto = (req, res) => {
-
   var id = req.params.id
   var name = req.body.name
   var date = req.body.date
-
   photos.editPhoto(id,name,date)
- 
   res.redirect('/photos')
 }
+
+
+
+
